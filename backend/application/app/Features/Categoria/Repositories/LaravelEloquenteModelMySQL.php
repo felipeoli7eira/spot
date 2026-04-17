@@ -21,16 +21,23 @@ final class LaravelEloquenteModelMySQL
         return $criado->toArray();
     }
 
-    public function read(array $filtros): array
+    public function listar(array $filtros): array
     {
         if (sizeof($filtros) === 0) {
             return $this->model->all()->toArray();
         }
 
         if (array_key_exists('uuid', $filtros)) {
-            return [$this->model->where('uuid', $filtros['uuid'])->first()->toArray()];
+            return [
+                $this->model->where('uuid', $filtros['uuid'])->first()->toArray()
+            ];
         }
 
         return [];
+    }
+
+    public function deletar(string $uuid): bool
+    {
+        return $this->model->where('uuid', $uuid)->delete();
     }
 }

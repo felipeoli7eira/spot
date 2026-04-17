@@ -2,9 +2,8 @@
 
 namespace App\Features\Categoria\Requests;
 
-use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
-use \Illuminate\Contracts\Validation\Validator;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\Attributes\FailOnUnknownFields;
 use Illuminate\Foundation\Http\Attributes\StopOnFirstFailure;
 use Illuminate\Http\Exceptions\HttpResponseException;
@@ -12,36 +11,33 @@ use Symfony\Component\HttpFoundation\Response;
 
 #[StopOnFirstFailure]
 #[FailOnUnknownFields]
-class Listar extends FormRequest
+class Deletar extends FormRequest
 {
     public function authorize(): bool
     {
         return true;
     }
 
-    public function prepareForValidation()
+    public function prepareForValidation(): void
     {
-        $campos = [];
-
-        if (request()->query('uuid')) {
-            $campos['uuid'] = request()->query('uuid');
-        }
-
-        return $campos;
+        $this->merge([
+            'uuid' => $this->route('uuid'),
+        ]);
     }
 
     public function rules(): array
     {
         return [
-            'uuid' => ['nullable', 'uuid', 'exists:categorias,uuid']
+            'uuid' => ['required', 'uuid', 'exists:categorias,uuid']
         ];
     }
 
     public function messages(): array
     {
         return [
-            'uuid.uuid' => 'O campo uuid deve ser um UUID válido.',
-            'uuid.exists' => 'Categoria informada não existe.'
+            'uuid.uuid'     => 'O campo uuid deve ser um UUID válido.',
+            'uuid.exists'   => 'Categoria informada não existe.',
+            'uuid.required' => 'O campo uuid é obrigatório.'
         ];
     }
 

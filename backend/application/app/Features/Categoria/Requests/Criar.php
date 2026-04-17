@@ -57,7 +57,7 @@ class Criar extends FormRequest
     {
         throw new HttpResponseException(response()->json([
             'err' => true,
-            'msg' => 'Erro de validação de cadastro de categoria.',
+            'msg' => 'Erro de validação na feature de categoria.',
             'data' => $validator->errors()->all(),
         ], Response::HTTP_BAD_REQUEST));
     }

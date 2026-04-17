@@ -4,7 +4,10 @@ namespace App\Features\Categoria\Controllers;
 
 use App\Features\Categoria\Requests\Criar;
 use App\Features\Categoria\Requests\Listar;
+use App\Features\Categoria\Requests\Deletar;
+
 use App\Features\Categoria\Services\Service;
+
 use App\Http\Controllers\Controller as BaseController;
 use Throwable;
 use Illuminate\Support\Facades\Response;
@@ -45,10 +48,10 @@ final class Controller extends BaseController
         ), HttpFoundationResponse::HTTP_CREATED);
     }
 
-    public function read(Listar $dados)
+    public function listar(Listar $dados)
     {
         try {
-            $categorias = $this->service->read(
+            $categorias = $this->service->listar(
                 $dados->validated()
             );
         } catch (Throwable $err) {
@@ -68,5 +71,25 @@ final class Controller extends BaseController
             $categorias,
             "Categoria listadas com sucesso.",
         ), HttpFoundationResponse::HTTP_OK);
+    }
+
+    public function deletar(Deletar $dados)
+    {
+        try {
+            $this->service->deletar($dados->validated('uuid'));
+        } catch (Throwable $err) {
+            return Response::json(
+                $this->err(
+                    [
+                        "getFile" => $err->getFile(),
+                        "getLine" => $err->getLine(),
+                    ],
+                    $err->getMessage(),
+                ),
+                HttpFoundationResponse::HTTP_INTERNAL_SERVER_ERROR,
+            );
+        }
+
+        return Response::noContent();
     }
 }

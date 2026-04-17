@@ -29,9 +29,9 @@ final class Service
         return $categoria;
     }
 
-    public function read(array $filtros): array
+    public function listar(array $filtros): array
     {
-        $categorias = $this->repositorio->read(
+        $categorias = $this->repositorio->listar(
             $filtros
         );
 
@@ -44,5 +44,10 @@ final class Service
 
             return $categoria;
         })->toArray();;
+    }
+
+    public function deletar(string $uuid): bool
+    {
+        return $this->repositorio->deletar($uuid);
     }
 }
