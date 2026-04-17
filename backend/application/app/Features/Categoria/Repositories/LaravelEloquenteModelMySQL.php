@@ -21,10 +21,16 @@ final class LaravelEloquenteModelMySQL
         return $criado->toArray();
     }
 
-    public function read(): array
+    public function read(array $filtros): array
     {
-        $categorias = $this->model->all();
+        if (sizeof($filtros) === 0) {
+            return $this->model->all()->toArray();
+        }
 
-        return $categorias->toArray();
+        if (array_key_exists('uuid', $filtros)) {
+            return [$this->model->where('uuid', $filtros['uuid'])->first()->toArray()];
+        }
+
+        return [];
     }
 }

@@ -29,9 +29,11 @@ final class Service
         return $categoria;
     }
 
-    public function read(): array
+    public function read(array $filtros): array
     {
-        $categorias = $this->repositorio->read();
+        $categorias = $this->repositorio->read(
+            $filtros
+        );
 
         return collect($categorias)->map(function ($categoria) {
             $categoria['dt_criacao'] = now()->createFromDate($categoria['created_at'])->format('d/m/Y H:i');

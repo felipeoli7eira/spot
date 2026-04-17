@@ -3,6 +3,7 @@
 namespace App\Features\Categoria\Controllers;
 
 use App\Features\Categoria\Requests\Criar;
+use App\Features\Categoria\Requests\Listar;
 use App\Features\Categoria\Services\Service;
 use App\Http\Controllers\Controller as BaseController;
 use Throwable;
@@ -44,10 +45,12 @@ final class Controller extends BaseController
         ), HttpFoundationResponse::HTTP_CREATED);
     }
 
-    public function read()
+    public function read(Listar $dados)
     {
         try {
-            $categorias = $this->service->read();
+            $categorias = $this->service->read(
+                $dados->validated()
+            );
         } catch (Throwable $err) {
             return Response::json(
                 $this->err(
