@@ -25,12 +25,54 @@ Tela para `CRUD` de produtos com suas respectivas categorias, sendo necessários
 
 
 # Como subir esse projeto na sua máquina
-...
+Esse projeto foi pensado para ter um setup fácil e rápido. Para que isso fosse possível, pensei em Docker. Docker e docker-compose são excelentes ferramentas para subir ambientes com pouco esforço e trabalho manual.
 
-# Decisões técnicas/arquiteturais sobre o FrontEnd
-...
+Se você tiver Docker e docker-compose instalados em sua máquina, colocar esse projeto em funcionamento será tão simples quanto executar:
+```sh
+docker compose up -d --build
+```
+
+O resultado disso deve ser 3 containers em funcionamento:
+- spot-nginx (`0.0.0.0:8000->80/tcp,`)
+- spot-backend (`9000/tcp` para php-fpm)
+- spot-mysql (`0.0.0.0:3306->3306/tcp`)
+
+![docker-ps.png](./docs/docker-ps.png)
+
+Caso você não tenha Docker/docker-compose instalados, o processo será um pouco mais manual mas ainda é possível. Você deve garantir que:
+- Tem um MySQL acessível em seu localhost
+- Tem PHP instalado e Composer configurado
+- As configurações no `.env` apontam corretamente para o MySQL
+- As migrations foram executadas
+
+> No setup manual será necessário ir vendo os erros de ambiente que acontecem e ir corrigindo, uma vez que apenas você sabe o que tem instalado na sua máquina e quais portas e quais hosts estão parametrizados.
+
+# Testes de API
+
+Na raiz desse repositório você consegue encontrar a collection postman para testar somente o funcionamento da API. Como healthcheck existe um endpoint `/api/ping` que você pode usar para validar o funcionamento da API.
+
+![docker-ps.png](./docs/postman-ping.png)
+
+Deixei alguns testes post-response como demonstração de que podemos usar o postman para aplicar alguns testes na API.
+
+![docker-ps.png](./docs/postman-tests.png)
+
+Também deixei alguns testes da API de categorias para fins de demonstração e aplicabilidade do TDD. Os testes estão em `tests/Feature`. Para executa-los, você pode executar de fora do container:
+```sh
+docker exec -it spot-backend php artisan test --testsuit=Feature --stop-on-failure
+```
+
+O resultado deve ser algo parecido com o seguinte:
+![docker-ps.png](./docs/tests-tdd.png)
 
 # Decisões técnicas/arquiteturais sobre o BackEnd
+Dependendo do tamanho da aplicação, um simples MVC cabe muito bem. As vezes um MVC com adição de service layer e repository layer. Eu particularmente gosto da abordagem de clean architecture mas para esse projeto eu preferi usar [Feature Based Architecture](https://medium.com/@viniciusvibrich/feature-based-estrutura-escal%C3%A1vel-para-projetos-complexos-505448ec86c1) com service e repository layers. É possível notar essa organização em `backend/application/app/Features`.
+
+[niveis-de-maturidade-de-uma-api-rest](https://www.programmers.com.br/blog/niveis-de-maturidade-de-uma-api-rest/).
+
+A api por ser simples e para fins demonstrativos, chega ao nivel 2 da [Richardson Maturity Model](https://martinfowler.com/articles/richardsonMaturityModel.html).
+
+# Decisões técnicas/arquiteturais sobre o FrontEnd
 ...
 
 # Considerações
