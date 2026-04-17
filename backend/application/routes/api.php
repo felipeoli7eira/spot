@@ -22,6 +22,6 @@ Route::prefix('/categorias')->group(function () {
 Route::prefix('/produtos')->group(function () {
     Route::post('/', [ProdutoController::class, 'criar']);
     Route::get('/', [ProdutoController::class, 'listar']);
-    // Route::delete('/{uuid}', [Controller::class, 'deletar']);
+    Route::delete('/{uuid}', [ProdutoController::class, 'deletar']);
     // Route::patch('/{uuid}', [Controller::class, 'atualizar']);
 });

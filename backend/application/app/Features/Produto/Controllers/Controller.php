@@ -4,7 +4,7 @@ namespace App\Features\Produto\Controllers;
 
 use App\Features\Produto\Requests\Criar;
 use App\Features\Produto\Requests\Listar;
-// use App\Features\Produto\Requests\Deletar;
+use App\Features\Produto\Requests\Deletar;
 // use App\Features\Produto\Requests\Atualizar;
 
 use App\Features\Produto\Services\Service;
@@ -74,25 +74,25 @@ final class Controller extends BaseController
         ), HttpFoundationResponse::HTTP_OK);
     }
 
-    // public function deletar(Deletar $dados)
-    // {
-    //     try {
-    //         $this->service->deletar($dados->validated('uuid'));
-    //     } catch (Throwable $err) {
-    //         return Response::json(
-    //             $this->err(
-    //                 [
-    //                     "getFile" => $err->getFile(),
-    //                     "getLine" => $err->getLine(),
-    //                 ],
-    //                 $err->getMessage(),
-    //             ),
-    //             HttpFoundationResponse::HTTP_INTERNAL_SERVER_ERROR,
-    //         );
-    //     }
+    public function deletar(Deletar $dados)
+    {
+        try {
+            $this->service->deletar($dados->validated('uuid'));
+        } catch (Throwable $err) {
+            return Response::json(
+                $this->err(
+                    [
+                        "getFile" => $err->getFile(),
+                        "getLine" => $err->getLine(),
+                    ],
+                    $err->getMessage(),
+                ),
+                HttpFoundationResponse::HTTP_INTERNAL_SERVER_ERROR,
+            );
+        }
 
-    //     return Response::noContent();
-    // }
+        return Response::noContent();
+    }
 
     // public function atualizar(Atualizar $dados)
     // {

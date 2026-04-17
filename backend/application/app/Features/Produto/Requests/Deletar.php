@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Features\Categoria\Requests;
+namespace App\Features\Produto\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
@@ -28,7 +28,7 @@ class Deletar extends FormRequest
     public function rules(): array
     {
         return [
-            'uuid' => ['required', 'uuid', 'exists:categorias,uuid']
+            'uuid' => ['required', 'uuid', 'exists:produtos,uuid']
         ];
     }
 
@@ -36,7 +36,7 @@ class Deletar extends FormRequest
     {
         return [
             'uuid.uuid'     => 'O campo uuid deve ser um UUID válido.',
-            'uuid.exists'   => 'Categoria informada não existe.',
+            'uuid.exists'   => 'Produto informada não existe.',
             'uuid.required' => 'O campo uuid é obrigatório.'
         ];
     }

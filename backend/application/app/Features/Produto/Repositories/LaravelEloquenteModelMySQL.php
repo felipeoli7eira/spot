@@ -47,10 +47,10 @@ final class LaravelEloquenteModelMySQL
         return [];
     }
 
-    // public function deletar(string $uuid): bool
-    // {
-    //     return $this->model->where('uuid', $uuid)->delete();
-    // }
+    public function deletar(string $uuid): bool
+    {
+        return $this->model->where('uuid', $uuid)->delete();
+    }
 
     // public function atualizar(string $uuid, $novosDados): array
     // {

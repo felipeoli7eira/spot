@@ -47,10 +47,10 @@ final class Service
         })->toArray();
     }
 
-    // public function deletar(string $uuid): bool
-    // {
-    //     return $this->repositorio->deletar($uuid);
-    // }
+    public function deletar(string $uuid): bool
+    {
+        return $this->repositorio->deletar($uuid);
+    }
 
     // public function atualizar(string $uuid, array $dados): array
     // {
