@@ -5,6 +5,7 @@ namespace App\Features\Categoria\Controllers;
 use App\Features\Categoria\Requests\Criar;
 use App\Features\Categoria\Requests\Listar;
 use App\Features\Categoria\Requests\Deletar;
+use App\Features\Categoria\Requests\Atualizar;
 
 use App\Features\Categoria\Services\Service;
 
@@ -91,5 +92,37 @@ final class Controller extends BaseController
         }
 
         return Response::noContent();
+    }
+
+    public function atualizar(Atualizar $dados)
+    {
+        try {
+            $dados = $dados->validated();
+
+            $uuid = $dados['uuid'];
+
+            unset($dados['uuid']);;
+
+            $categoria = $this->service->atualizar(
+                $uuid,
+                $dados
+            );
+        } catch (Throwable $err) {
+            return Response::json(
+                $this->err(
+                    [
+                        "getFile" => $err->getFile(),
+                        "getLine" => $err->getLine(),
+                    ],
+                    $err->getMessage(),
+                ),
+                HttpFoundationResponse::HTTP_INTERNAL_SERVER_ERROR,
+            );
+        }
+
+        return Response::json($this->sucesso(
+            $categoria,
+            "Dados da categoria atualizados com sucesso.",
+        ), HttpFoundationResponse::HTTP_OK);
     }
 }

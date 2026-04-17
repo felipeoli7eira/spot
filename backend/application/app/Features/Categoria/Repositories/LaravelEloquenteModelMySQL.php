@@ -40,4 +40,18 @@ final class LaravelEloquenteModelMySQL
     {
         return $this->model->where('uuid', $uuid)->delete();
     }
+
+
+    public function atualizar(string $uuid, $novosDados): array
+    {
+        $categoria = $this->model->where('uuid', $uuid)->first();
+
+        $categoria->fill($novosDados);
+
+        $categoria->save();
+
+        return [
+            $categoria->toArray()
+        ];
+    }
 }

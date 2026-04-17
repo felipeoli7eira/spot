@@ -43,11 +43,29 @@ final class Service
             unset($categoria['updated_at']);
 
             return $categoria;
-        })->toArray();;
+        })->toArray();
     }
 
     public function deletar(string $uuid): bool
     {
         return $this->repositorio->deletar($uuid);
+    }
+
+    public function atualizar(string $uuid, array $dados): array
+    {
+        $categoria = $this->repositorio->atualizar(
+            $uuid,
+            $dados
+        );
+
+        return collect($categoria)->map(function ($categoria) {
+            $categoria['dt_criacao'] = now()->createFromDate($categoria['created_at'])->format('d/m/Y H:i');
+            $categoria['dt_atualizacao'] = now()->createFromDate($categoria['updated_at'])->format('d/m/Y H:i');
+
+            unset($categoria['created_at']);
+            unset($categoria['updated_at']);
+
+            return $categoria;
+        })->first();
     }
 }

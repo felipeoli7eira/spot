@@ -14,4 +14,5 @@ Route::prefix('/categorias')->group(function () {
     Route::post('/', [Controller::class, 'criar']);
     Route::get('/', [Controller::class, 'listar']);
     Route::delete('/{uuid}', [Controller::class, 'deletar']);
+    Route::patch('/{uuid}', [Controller::class, 'atualizar']);
 });
