@@ -3,6 +3,15 @@
 import PageHeaderComponent from '@/components/pageHeader/index.vue'
 import Cadastro from "./components/cadastro.vue"
 import { Edit, Trash } from 'lucide-vue-next';
+import { onMounted } from 'vue';
+
+import useListagem from './hooks/useListagem.ts'
+
+const { listar, listando, lista: produtos } = useListagem()
+
+onMounted(async () => {
+    await listar()
+})
 
 </script>
 
@@ -29,12 +38,12 @@ import { Edit, Trash } from 'lucide-vue-next';
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th>1</th>
-                        <td>Cy Ganderton</td>
-                        <td>Quality Control Specialist</td>
-                        <td>Blue</td>
-                        <td>Blue</td>
+                    <tr v-for="(p, index) in produtos" :key="p.uuid">
+                        <th>{{ index + 1 }}</th>
+                        <td>{{ p.nome }}</td>
+                        <td>{{ p.descricao }}</td>
+                        <td>{{ p?.categoria?.nome }}</td>
+                        <td>{{ p.dt_criacao }}</td>
                         <td class="space-x-1">
                             <button type="button" class="btn btn-xs btn-error">
                                 <Trash :size="20" class="" />

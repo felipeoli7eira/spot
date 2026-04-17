@@ -1,4 +1,5 @@
 import http from "@/services/http"
+import { toast } from "@steveyuowo/vue-hot-toast"
 import { ref } from "vue"
 
 export default function useCadastro() {
@@ -32,6 +33,10 @@ export default function useCadastro() {
             const { data, status } = await http.post('/produtos', {
                 ...dadosParaCadastro.value
             })
+
+            if (status === 201) {
+                toast.success("Produto cadastrado")
+            }
 
             limparCampos()
         } catch (error) {
