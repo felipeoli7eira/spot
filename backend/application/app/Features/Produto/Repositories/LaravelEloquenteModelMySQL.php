@@ -21,7 +21,7 @@ final class LaravelEloquenteModelMySQL
             'uuid'         => Str::uuid()->toString(),
             'nome'         => $dados['nome'],
             'descricao'    => $dados['descricao'],
-            'preco'        => $dados['preco'],
+            'preco'        => $dados['preco'] ?? 0.0,
             'categoria_id' => $categoria->id,
         ]);
 
