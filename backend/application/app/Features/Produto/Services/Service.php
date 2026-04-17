@@ -29,22 +29,23 @@ final class Service
         return $produto;
     }
 
-    // public function listar(array $filtros): array
-    // {
-    //     $categorias = $this->repositorio->listar(
-    //         $filtros
-    //     );
+    public function listar(array $filtros): array
+    {
+        $produtos = $this->repositorio->listar(
+            $filtros
+        );
 
-    //     return collect($categorias)->map(function ($categoria) {
-    //         $categoria['dt_criacao'] = now()->createFromDate($categoria['created_at'])->format('d/m/Y H:i');
-    //         $categoria['dt_atualizacao'] = now()->createFromDate($categoria['updated_at'])->format('d/m/Y H:i');
+        return collect($produtos)->map(function ($p) {
+            $p['dt_criacao'] = now()->createFromDate($p['created_at'])->format('d/m/Y H:i');
+            $p['dt_atualizacao'] = now()->createFromDate($p['updated_at'])->format('d/m/Y H:i');
 
-    //         unset($categoria['created_at']);
-    //         unset($categoria['updated_at']);
+            unset($p['created_at']);
+            unset($p['updated_at']);
+            unset($p['categoria_id']);
 
-    //         return $categoria;
-    //     })->toArray();
-    // }
+            return $p;
+        })->toArray();
+    }
 
     // public function deletar(string $uuid): bool
     // {

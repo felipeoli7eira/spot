@@ -28,20 +28,24 @@ final class LaravelEloquenteModelMySQL
         return $produto->with(['categoria'])->first()->toArray();
     }
 
-    // public function listar(array $filtros): array
-    // {
-    //     if (sizeof($filtros) === 0) {
-    //         return $this->model->all()->toArray();
-    //     }
+    public function listar(array $filtros): array
+    {
+        $query = $this->model->with([
+            'categoria:id,nome,descricao,status'
+        ]);
 
-    //     if (array_key_exists('uuid', $filtros)) {
-    //         return [
-    //             $this->model->where('uuid', $filtros['uuid'])->first()->toArray()
-    //         ];
-    //     }
+        if (empty($filtros)) {
+            return $query->get()->toArray();
+        }
 
-    //     return [];
-    // }
+        if (array_key_exists('uuid', $filtros)) {
+            return [
+                $query->where('uuid', $filtros['uuid'])->first()?->toArray()
+            ];
+        }
+
+        return [];
+    }
 
     // public function deletar(string $uuid): bool
     // {

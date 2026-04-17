@@ -3,7 +3,7 @@
 namespace App\Features\Produto\Controllers;
 
 use App\Features\Produto\Requests\Criar;
-// use App\Features\Produto\Requests\Listar;
+use App\Features\Produto\Requests\Listar;
 // use App\Features\Produto\Requests\Deletar;
 // use App\Features\Produto\Requests\Atualizar;
 
@@ -49,30 +49,30 @@ final class Controller extends BaseController
         ), HttpFoundationResponse::HTTP_CREATED);
     }
 
-    // public function listar(Listar $dados)
-    // {
-    //     try {
-    //         $categorias = $this->service->listar(
-    //             $dados->validated()
-    //         );
-    //     } catch (Throwable $err) {
-    //         return Response::json(
-    //             $this->err(
-    //                 [
-    //                     "getFile" => $err->getFile(),
-    //                     "getLine" => $err->getLine(),
-    //                 ],
-    //                 $err->getMessage(),
-    //             ),
-    //             HttpFoundationResponse::HTTP_INTERNAL_SERVER_ERROR,
-    //         );
-    //     }
+    public function listar(Listar $dados)
+    {
+        try {
+            $produtos = $this->service->listar(
+                $dados->validated()
+            );
+        } catch (Throwable $err) {
+            return Response::json(
+                $this->err(
+                    [
+                        "getFile" => $err->getFile(),
+                        "getLine" => $err->getLine(),
+                    ],
+                    $err->getMessage(),
+                ),
+                HttpFoundationResponse::HTTP_INTERNAL_SERVER_ERROR,
+            );
+        }
 
-    //     return Response::json($this->sucesso(
-    //         $categorias,
-    //         "Categoria listadas com sucesso.",
-    //     ), HttpFoundationResponse::HTTP_OK);
-    // }
+        return Response::json($this->sucesso(
+            $produtos,
+            "Produto(s) listado(s) com sucesso.",
+        ), HttpFoundationResponse::HTTP_OK);
+    }
 
     // public function deletar(Deletar $dados)
     // {

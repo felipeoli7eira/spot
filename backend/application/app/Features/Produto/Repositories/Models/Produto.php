@@ -15,7 +15,9 @@ class Produto extends Model
 {
     protected function casts(): array
     {
-        return [];
+        return [
+            'preco' => 'float'
+        ];
     }
 
     public function categoria()
@@ -24,8 +26,6 @@ class Produto extends Model
             Categoria::class,
             'categoria_id',
             'id',
-            'uuid',
-            true
         );
     }
 }

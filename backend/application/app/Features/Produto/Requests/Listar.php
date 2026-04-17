@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Features\Categoria\Requests;
+namespace App\Features\Produto\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
-use \Illuminate\Contracts\Validation\Validator;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\Attributes\FailOnUnknownFields;
 use Illuminate\Foundation\Http\Attributes\StopOnFirstFailure;
 use Illuminate\Http\Exceptions\HttpResponseException;
@@ -33,7 +33,7 @@ class Listar extends FormRequest
     public function rules(): array
     {
         return [
-            'uuid' => ['nullable', 'uuid', 'exists:categorias,uuid']
+            'uuid' => ['nullable', 'uuid', 'exists:produtos,uuid']
         ];
     }
 
@@ -41,7 +41,7 @@ class Listar extends FormRequest
     {
         return [
             'uuid.uuid' => 'O campo uuid deve ser um UUID válido.',
-            'uuid.exists' => 'Categoria informada não existe.'
+            'uuid.exists' => 'Produto informada não existe.'
         ];
     }
 
@@ -49,7 +49,7 @@ class Listar extends FormRequest
     {
         throw new HttpResponseException(response()->json([
             'err' => true,
-            'msg' => 'Erro de validação na feature de categoria.',
+            'msg' => 'Erro de validação na feature de produtos.',
             'data' => $validator->errors()->all(),
         ], Response::HTTP_BAD_REQUEST));
     }
