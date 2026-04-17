@@ -7,6 +7,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\Attributes\FailOnUnknownFields;
 use Illuminate\Foundation\Http\Attributes\StopOnFirstFailure;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Validation\Rule;
 use Symfony\Component\HttpFoundation\Response;
 
 #[StopOnFirstFailure]
@@ -29,10 +30,10 @@ class Atualizar extends FormRequest
     {
         return [
             'uuid'      => ['required', 'uuid', 'exists:produtos,uuid'],
-            'nome'      => ['nullable', 'string', 'max:255', 'unique:produtos,nome', 'min:3'],
-            'descricao' => ['nullable', 'string', 'max:255', 'min:3'],
-            'preco'     => ['nullable', 'numeric', 'decimal:0,2', 'min:0', 'max:99999999.99'],
-            'categoria' => ['nullable', 'uuid', 'exists:categorias,uuid'],
+            'nome'      => ['sometimes', 'string', 'max:255', 'min:3', Rule::unique('produtos', 'nome')->ignore($this->uuid, 'uuid'),],
+            'descricao' => ['sometimes', 'string', 'max:255', 'min:3'],
+            'preco'     => ['sometimes', 'numeric', 'decimal:0,2', 'min:0', 'max:99999999.99'],
+            'categoria' => ['sometimes', 'uuid', 'exists:categorias,uuid'],
         ];
     }
 

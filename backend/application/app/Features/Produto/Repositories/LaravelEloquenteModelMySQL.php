@@ -31,7 +31,7 @@ final class LaravelEloquenteModelMySQL
     public function listar(array $filtros): array
     {
         $query = $this->model->with([
-            'categoria:id,nome,descricao,status'
+            'categoria:id,uuid,nome,descricao,status'
         ]);
 
         if (empty($filtros)) {
