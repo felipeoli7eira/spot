@@ -52,21 +52,21 @@ final class Service
         return $this->repositorio->deletar($uuid);
     }
 
-    // public function atualizar(string $uuid, array $dados): array
-    // {
-    //     $categoria = $this->repositorio->atualizar(
-    //         $uuid,
-    //         $dados
-    //     );
+    public function atualizar(string $uuid, array $dados): array
+    {
+        $produto = $this->repositorio->atualizar(
+            $uuid,
+            $dados
+        );
 
-    //     return collect($categoria)->map(function ($categoria) {
-    //         $categoria['dt_criacao'] = now()->createFromDate($categoria['created_at'])->format('d/m/Y H:i');
-    //         $categoria['dt_atualizacao'] = now()->createFromDate($categoria['updated_at'])->format('d/m/Y H:i');
+        return collect($produto)->map(function ($p) {
+            $p['dt_criacao'] = now()->createFromDate($p['created_at'])->format('d/m/Y H:i');
+            $p['dt_atualizacao'] = now()->createFromDate($p['updated_at'])->format('d/m/Y H:i');
 
-    //         unset($categoria['created_at']);
-    //         unset($categoria['updated_at']);
+            unset($p['created_at']);
+            unset($p['updated_at']);
 
-    //         return $categoria;
-    //     })->first();
-    // }
+            return $p;
+        })->first();
+    }
 }

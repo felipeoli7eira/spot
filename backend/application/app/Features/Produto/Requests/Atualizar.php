@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Features\Categoria\Requests;
+namespace App\Features\Produto\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
@@ -28,10 +28,11 @@ class Atualizar extends FormRequest
     public function rules(): array
     {
         return [
-            'uuid'      => ['required', 'uuid', 'exists:categorias,uuid'],
-            'nome'      => ['nullable', 'string', 'max:255', 'unique:categorias,nome', 'min:3'],
+            'uuid'      => ['required', 'uuid', 'exists:produtos,uuid'],
+            'nome'      => ['nullable', 'string', 'max:255', 'unique:produtos,nome', 'min:3'],
             'descricao' => ['nullable', 'string', 'max:255', 'min:3'],
-            'status'    => ['nullable', 'boolean'],
+            'preco'     => ['nullable', 'numeric', 'decimal:0,2', 'min:0', 'max:99999999.99'],
+            'categoria' => ['nullable', 'uuid', 'exists:categorias,uuid'],
         ];
     }
 
@@ -39,20 +40,23 @@ class Atualizar extends FormRequest
     {
         return [
             'uuid.uuid' => 'O campo uuid deve ser um UUID válido.',
-            'uuid.exists' => 'Categoria informada não existe.',
+            'uuid.exists' => 'Produto informada não existe.',
             'uuid.required' => 'O campo uuid é obrigatório.',
 
-            'nome.string' => 'O nome da categoria deve ser uma string.',
-            'nome.max' => 'O nome da categoria deve ter no máximo 255 caracteres.',
-            'nome.unique' => 'Categoria já existe.',
-            'nome.min' => 'O nome da categoria deve ter no mínimo 3 caracteres.',
+            'nome.string' => 'O campo nome deve ser uma string.',
+            'nome.max' => 'O campo nome deve ter no máximo 255 caracteres.',
+            'nome.unique' => 'Produto com esse nome já existe.',
+            'nome.min' => 'O campo nome deve ter no mínimo 3 caracteres.',
 
-            'descricao.string' => 'A descrição da categoria deve ser uma string.',
-            'descricao.max' => 'A descrição da categoria deve ter no máximo 255 caracteres.',
-            'descricao.min' => 'A descrição da categoria deve ter no mínimo 3 caracteres.',
+            'descricao.string' => 'O campo descricao deve ser uma string.',
+            'descricao.max' => 'O campo descricao deve ter no máximo 255 caracteres.',
+            'descricao.min' => 'O campo descricao deve ter no mínimo 3 caracteres.',
 
-            'status.nullable' => 'O status da categoria deve ser nulo.',
-            'status.boolean' => 'O status da categoria deve ser um booleano.',
+            'preco.decimal' => 'O campo preco deve ser um número decimal.',
+            'preco.min' => 'O campo preco deve ser maior ou igual a 0.',
+
+            'categoria.uuid' => 'O campo categoria deve ser um UUID válido.',
+            'categoria.exists' => 'Categoria informada não existe.',
         ];
     }
 

@@ -52,16 +52,26 @@ final class LaravelEloquenteModelMySQL
         return $this->model->where('uuid', $uuid)->delete();
     }
 
-    // public function atualizar(string $uuid, $novosDados): array
-    // {
-    //     $categoria = $this->model->where('uuid', $uuid)->first();
+    public function atualizar(string $uuid, $novosDados): array
+    {
+        $produto = $this->model->with([
+            'categoria:id,nome,descricao,status'
+        ])->where('uuid', $uuid)->first();
 
-    //     $categoria->fill($novosDados);
+        if (array_key_exists('categoria', $novosDados)) {
+            $categoria = $this->categoria->where('uuid', $novosDados['categoria'])->first();
 
-    //     $categoria->save();
+            unset($novosDados['categoria']);
 
-    //     return [
-    //         $categoria->toArray()
-    //     ];
-    // }
+            $produto->categoria_id = $categoria->id;
+        }
+
+        $produto->fill($novosDados);
+
+        $produto->save();
+
+        return [
+            $produto->toArray()
+        ];
+    }
 }
