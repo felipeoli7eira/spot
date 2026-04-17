@@ -1,0 +1,1132 @@
+{
+  "info": {
+    "_postman_id": "e2338f79-b1e7-4a55-b59c-f3516d828359",
+    "name": "spot-tech-challenge",
+    "description": "Para todos os detalhes técnicos, por favor consulte o [repositório do projeto.](https://github.com/felipeoli7eira/spot)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "26486378",
+    "_collection_link": "https://go.postman.co/collection/26486378-e2338f79-b1e7-4a55-b59c-f3516d828359?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "categorias",
+      "item": [
+        {
+          "name": "create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nome\": \"{{$randomCompanyName}}\",\r\n    \"descricao\": \"{{$randomLoremSentence}}\",\r\n    \"status\": {{$randomBoolean}}\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{api}}/categorias",
+              "host": [
+                "{{api}}"
+              ],
+              "path": [
+                "categorias"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "201",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"nome\": \"{{$randomCompanyName}}\",\r\n    \"descricao\": \"{{$randomLoremSentence}}\",\r\n    \"status\": {{$randomBoolean}}\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{api}}/categorias",
+                  "host": [
+                    "{{api}}"
+                  ],
+                  "path": [
+                    "categorias"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx/1.29.8"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.4.20"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 17 Apr 2026 00:42:32 GMT"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"err\": true,\n    \"msg\": \"Categoria criada com sucesso.\",\n    \"data\": {\n        \"uuid\": \"411c18d1-f65c-4802-b315-13df41ec2f64\",\n        \"nome\": \"Abbott - Kovacek\",\n        \"descricao\": \"Ullam soluta quo suscipit dolor.\",\n        \"status\": false,\n        \"dt_criacao\": \"17/04/2026 00:42\",\n        \"dt_atualizacao\": \"17/04/2026 00:42\"\n    }\n}"
+            },
+            {
+              "name": "400",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"nome\": \"{{$randomCompanyName}}\",\r\n    // \"descricao\": \"{{$randomLoremSentence}}\",\r\n    \"status\": {{$randomBoolean}}\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{api}}/categorias",
+                  "host": [
+                    "{{api}}"
+                  ],
+                  "path": [
+                    "categorias"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx/1.29.8"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.4.20"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 17 Apr 2026 00:42:44 GMT"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"err\": true,\n    \"msg\": \"Erro de validação de cadastro de categoria.\",\n    \"data\": [\n        \"O campo descrição é obrigatório.\"\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "read",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{api}}/categorias",
+              "host": [
+                "{{api}}"
+              ],
+              "path": [
+                "categorias"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{api}}/categorias",
+                  "host": [
+                    "{{api}}"
+                  ],
+                  "path": [
+                    "categorias"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx/1.29.8"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.4.20"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 17 Apr 2026 00:15:48 GMT"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"err\": false,\n    \"msg\": \"Categoria listadas com sucesso.\",\n    \"data\": [\n        {\n            \"uuid\": \"faaa0fef-de40-4a30-9db6-e88b9915da04\",\n            \"nome\": \"Huel LLC\",\n            \"descricao\": \"Est id voluptatum earum ex neque aut adipisci facere ut.\",\n            \"status\": 0,\n            \"created_at\": \"2026-04-16T23:31:40.000000Z\",\n            \"updated_at\": \"2026-04-16T23:31:40.000000Z\"\n        },\n        {\n            \"uuid\": \"ad4b4d24-44a2-424c-b952-5ad6074f5d83\",\n            \"nome\": \"Beier - Johnson\",\n            \"descricao\": \"Tempore dolor laboriosam repellat mollitia.\",\n            \"status\": 1,\n            \"created_at\": \"2026-04-16T23:32:25.000000Z\",\n            \"updated_at\": \"2026-04-16T23:32:25.000000Z\"\n        },\n        {\n            \"uuid\": \"0cf2936e-a856-43f9-8a22-02bef0728120\",\n            \"nome\": \"Lueilwitz Inc\",\n            \"descricao\": \"Ad quas corporis consequuntur totam ab.\",\n            \"status\": 0,\n            \"created_at\": \"2026-04-16T23:33:05.000000Z\",\n            \"updated_at\": \"2026-04-16T23:33:05.000000Z\"\n        },\n        {\n            \"uuid\": \"5036343f-169e-445a-becc-db901b5715d2\",\n            \"nome\": \"Ledner LLC\",\n            \"descricao\": \"Omnis placeat dolores velit architecto molestiae reprehenderit.\",\n            \"status\": 0,\n            \"created_at\": \"2026-04-16T23:33:27.000000Z\",\n            \"updated_at\": \"2026-04-16T23:33:27.000000Z\"\n        },\n        {\n            \"uuid\": \"c0b410d2-1368-431a-801c-ea8d4770c777\",\n            \"nome\": \"Senger and Sons\",\n            \"descricao\": \"Inventore rerum et vel illum eum quidem eaque non deserunt.\",\n            \"status\": 0,\n            \"created_at\": \"2026-04-16T23:33:39.000000Z\",\n            \"updated_at\": \"2026-04-16T23:33:39.000000Z\"\n        },\n        {\n            \"uuid\": \"3cd511a7-7ebd-4875-bcc2-42ddbda1f3e1\",\n            \"nome\": \"Carroll Inc\",\n            \"descricao\": \"Sed voluptatem eos debitis nemo enim qui.\",\n            \"status\": 0,\n            \"created_at\": \"2026-04-16T23:33:58.000000Z\",\n            \"updated_at\": \"2026-04-16T23:33:58.000000Z\"\n        },\n        {\n            \"uuid\": \"d19fbb83-b170-4a35-bb49-987de456df69\",\n            \"nome\": \"Blanda and Sons\",\n            \"descricao\": \"Et voluptas voluptate consequatur aut reprehenderit cum modi iure.\",\n            \"status\": 1,\n            \"created_at\": \"2026-04-16T23:35:07.000000Z\",\n            \"updated_at\": \"2026-04-16T23:35:07.000000Z\"\n        },\n        {\n            \"uuid\": \"7603af5b-a8ae-409a-ba07-f0cd9a52449d\",\n            \"nome\": \"Beer - Maggio\",\n            \"descricao\": \"Ducimus sapiente itaque porro eius culpa quos.\",\n            \"status\": 0,\n            \"created_at\": \"2026-04-16T23:36:16.000000Z\",\n            \"updated_at\": \"2026-04-16T23:36:16.000000Z\"\n        },\n        {\n            \"uuid\": \"e0b91cb4-b796-4451-9200-17cae13b7624\",\n            \"nome\": \"Pouros, Boehm and Little\",\n            \"descricao\": \"Consequatur voluptas veritatis pariatur.\",\n            \"status\": 1,\n            \"created_at\": \"2026-04-16T23:36:32.000000Z\",\n            \"updated_at\": \"2026-04-16T23:36:32.000000Z\"\n        },\n        {\n            \"uuid\": \"9306417e-1289-43a2-91f9-b276802c17aa\",\n            \"nome\": \"Cartwright and Sons\",\n            \"descricao\": \"Quo deserunt omnis vel deleniti ab rerum odio.\",\n            \"status\": 1,\n            \"created_at\": \"2026-04-16T20:37:57.000000Z\",\n            \"updated_at\": \"2026-04-16T20:37:57.000000Z\"\n        },\n        {\n            \"uuid\": \"cc236907-86df-41bd-9d13-708ed39a050b\",\n            \"nome\": \"Stracke, Rogahn and Hills\",\n            \"descricao\": \"Voluptatem aut voluptas maxime consequatur quia aut similique et.\",\n            \"status\": 0,\n            \"created_at\": \"2026-04-16T20:38:51.000000Z\",\n            \"updated_at\": \"2026-04-16T20:38:51.000000Z\"\n        },\n        {\n            \"uuid\": \"64a40b00-a442-488c-9724-372d25678a05\",\n            \"nome\": \"Hegmann - Johnson\",\n            \"descricao\": \"Quo laboriosam temporibus autem debitis dolore maiores qui.\",\n            \"status\": 0,\n            \"created_at\": \"2026-04-17T00:13:00.000000Z\",\n            \"updated_at\": \"2026-04-17T00:13:00.000000Z\"\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "read one",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{api}}/categorias?uuid=ad4b4d24-44a2-424c-b952-5ad6074f5d83",
+              "host": [
+                "{{api}}"
+              ],
+              "path": [
+                "categorias"
+              ],
+              "query": [
+                {
+                  "key": "uuid",
+                  "value": "ad4b4d24-44a2-424c-b952-5ad6074f5d83"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{api}}/categorias?uuid=ad4b4d24-44a2-424c-b952-5ad6074f5d83",
+                  "host": [
+                    "{{api}}"
+                  ],
+                  "path": [
+                    "categorias"
+                  ],
+                  "query": [
+                    {
+                      "key": "uuid",
+                      "value": "ad4b4d24-44a2-424c-b952-5ad6074f5d83"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx/1.29.8"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.4.20"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 17 Apr 2026 00:36:01 GMT"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"err\": false,\n    \"msg\": \"Categoria listadas com sucesso.\",\n    \"data\": [\n        {\n            \"uuid\": \"ad4b4d24-44a2-424c-b952-5ad6074f5d83\",\n            \"nome\": \"Beier - Johnson\",\n            \"descricao\": \"Tempore dolor laboriosam repellat mollitia.\",\n            \"status\": 1,\n            \"dt_criacao\": \"16/04/2026 23:32\",\n            \"dt_atualizacao\": \"16/04/2026 23:32\"\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{api}}/categorias/ad4b4d24-44a2-424c-b952-5ad6074f5d83",
+              "host": [
+                "{{api}}"
+              ],
+              "path": [
+                "categorias",
+                "ad4b4d24-44a2-424c-b952-5ad6074f5d83"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "400",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{api}}/categorias/ad4b4d24-44a2-424c-b952-5ad6074f5d83",
+                  "host": [
+                    "{{api}}"
+                  ],
+                  "path": [
+                    "categorias",
+                    "ad4b4d24-44a2-424c-b952-5ad6074f5d83"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "",
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx/1.29.8"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.4.20"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 17 Apr 2026 00:50:36 GMT"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"err\": true,\n    \"msg\": \"Erro de validação na feature de categoria.\",\n    \"data\": [\n        \"O campo uuid é obrigatório.\"\n    ]\n}"
+            },
+            {
+              "name": "204 (sucess)",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{api}}/categorias/ad4b4d24-44a2-424c-b952-5ad6074f5d83",
+                  "host": [
+                    "{{api}}"
+                  ],
+                  "path": [
+                    "categorias",
+                    "ad4b4d24-44a2-424c-b952-5ad6074f5d83"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "",
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx/1.29.8"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.4.20"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 17 Apr 2026 00:55:59 GMT"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": ""
+            }
+          ]
+        },
+        {
+          "name": "update",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nome\": \"{{$randomCompanyName}}\",\r\n    \"descricao\": \"{{$randomLoremSentence}}\",\r\n    \"status\": {{$randomBoolean}}\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{api}}/categorias/faaa0fef-de40-4a30-9db6-e88b9915da04",
+              "host": [
+                "{{api}}"
+              ],
+              "path": [
+                "categorias",
+                "faaa0fef-de40-4a30-9db6-e88b9915da04"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"nome\": \"{{$randomCompanyName}}\",\r\n    \"descricao\": \"{{$randomLoremSentence}}\",\r\n    \"status\": {{$randomBoolean}}\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{api}}/categorias/faaa0fef-de40-4a30-9db6-e88b9915da04",
+                  "host": [
+                    "{{api}}"
+                  ],
+                  "path": [
+                    "categorias",
+                    "faaa0fef-de40-4a30-9db6-e88b9915da04"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "",
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx/1.29.8"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.4.20"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 17 Apr 2026 01:16:58 GMT"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"err\": false,\n    \"msg\": \"Dados da categoria atualizados com sucesso.\",\n    \"data\": {\n        \"uuid\": \"faaa0fef-de40-4a30-9db6-e88b9915da04\",\n        \"nome\": \"Okuneva and Sons\",\n        \"descricao\": \"Quis aut sequi occaecati reprehenderit.\",\n        \"status\": true,\n        \"dt_criacao\": \"16/04/2026 23:31\",\n        \"dt_atualizacao\": \"17/04/2026 01:16\"\n    }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "produtos",
+      "item": [
+        {
+          "name": "create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nome\": \"{{$randomCompanyName}}\",\r\n    \"descricao\": \"{{$randomLoremSentence}}\",\r\n    \"preco\": {{$randomPrice}},\r\n    \"categoria\":  \"4e48e839-65cb-45b8-b729-3b208c9ad9cf\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{api}}/produtos",
+              "host": [
+                "{{api}}"
+              ],
+              "path": [
+                "produtos"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "201",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"nome\": \"{{$randomCompanyName}}\",\r\n    \"descricao\": \"{{$randomLoremSentence}}\",\r\n    \"preco\": {{$randomPrice}},\r\n    \"categoria\":  \"4e48e839-65cb-45b8-b729-3b208c9ad9cf\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{api}}/produtos",
+                  "host": [
+                    "{{api}}"
+                  ],
+                  "path": [
+                    "produtos"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx/1.29.8"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.4.20"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 17 Apr 2026 01:57:50 GMT"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"err\": false,\n    \"msg\": \"Produto criado com sucesso.\",\n    \"data\": {\n        \"uuid\": \"a2100dba-664e-4c83-92ba-da7a78e81328\",\n        \"nome\": \"Beahan - Wiza\",\n        \"descricao\": \"Est id atque iure totam non est magnam repudiandae fugiat.\",\n        \"preco\": \"407.43\",\n        \"categoria_id\": 1,\n        \"categoria\": {\n            \"uuid\": \"4e48e839-65cb-45b8-b729-3b208c9ad9cf\",\n            \"nome\": \"Douglas - Robel\",\n            \"descricao\": \"Rerum velit officia iure.\",\n            \"status\": 0\n        },\n        \"dt_criacao\": \"17/04/2026 01:49\",\n        \"dt_atualizacao\": \"17/04/2026 01:49\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "read",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{api}}/produtos",
+              "host": [
+                "{{api}}"
+              ],
+              "path": [
+                "produtos"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{api}}/produtos",
+                  "host": [
+                    "{{api}}"
+                  ],
+                  "path": [
+                    "produtos"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "",
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx/1.29.8"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.4.20"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 17 Apr 2026 02:07:11 GMT"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"err\": false,\n    \"msg\": \"Produtos listados com sucesso.\",\n    \"data\": [\n        {\n            \"uuid\": \"a2100dba-664e-4c83-92ba-da7a78e81328\",\n            \"nome\": \"Beahan - Wiza\",\n            \"descricao\": \"Est id atque iure totam non est magnam repudiandae fugiat.\",\n            \"preco\": 407.43,\n            \"categoria\": {\n                \"nome\": \"Douglas - Robel\",\n                \"descricao\": \"Rerum velit officia iure.\",\n                \"status\": 0\n            },\n            \"dt_criacao\": \"17/04/2026 01:49\",\n            \"dt_atualizacao\": \"17/04/2026 01:49\"\n        },\n        {\n            \"uuid\": \"c421f2b5-2ef1-433a-b3e5-35c7f9de84d1\",\n            \"nome\": \"Will Inc\",\n            \"descricao\": \"Doloribus illo voluptate occaecati quaerat rem sapiente tempora odit doloremque.\",\n            \"preco\": 435.39,\n            \"categoria\": {\n                \"nome\": \"Douglas - Robel\",\n                \"descricao\": \"Rerum velit officia iure.\",\n                \"status\": 0\n            },\n            \"dt_criacao\": \"17/04/2026 01:50\",\n            \"dt_atualizacao\": \"17/04/2026 01:50\"\n        },\n        {\n            \"uuid\": \"d112b5a4-6552-40a1-ae9d-c3886649d30f\",\n            \"nome\": \"Blanda and Sons\",\n            \"descricao\": \"Ut temporibus quasi adipisci omnis eum tempora consequatur doloribus.\",\n            \"preco\": 99.03,\n            \"categoria\": {\n                \"nome\": \"Douglas - Robel\",\n                \"descricao\": \"Rerum velit officia iure.\",\n                \"status\": 0\n            },\n            \"dt_criacao\": \"17/04/2026 01:50\",\n            \"dt_atualizacao\": \"17/04/2026 01:50\"\n        },\n        {\n            \"uuid\": \"2224775a-4366-4fbf-9212-67e577e2baef\",\n            \"nome\": \"Bode Group\",\n            \"descricao\": \"Consectetur voluptas quis nam sapiente.\",\n            \"preco\": 480.7,\n            \"categoria\": {\n                \"nome\": \"Douglas - Robel\",\n                \"descricao\": \"Rerum velit officia iure.\",\n                \"status\": 0\n            },\n            \"dt_criacao\": \"17/04/2026 01:50\",\n            \"dt_atualizacao\": \"17/04/2026 01:50\"\n        },\n        {\n            \"uuid\": \"c1b3b4e2-6cdd-4087-98bc-0c4176625794\",\n            \"nome\": \"Homenick, Parker and Gerlach\",\n            \"descricao\": \"Soluta ea alias dolore eos quae recusandae.\",\n            \"preco\": 462.06,\n            \"categoria\": {\n                \"nome\": \"Douglas - Robel\",\n                \"descricao\": \"Rerum velit officia iure.\",\n                \"status\": 0\n            },\n            \"dt_criacao\": \"17/04/2026 01:51\",\n            \"dt_atualizacao\": \"17/04/2026 01:51\"\n        },\n        {\n            \"uuid\": \"9c2f44cc-1eb2-4d4e-b352-a303b971ca5c\",\n            \"nome\": \"Hermann - Dicki\",\n            \"descricao\": \"Qui officia distinctio est quas.\",\n            \"preco\": 798.71,\n            \"categoria\": {\n                \"nome\": \"Douglas - Robel\",\n                \"descricao\": \"Rerum velit officia iure.\",\n                \"status\": 0\n            },\n            \"dt_criacao\": \"17/04/2026 01:51\",\n            \"dt_atualizacao\": \"17/04/2026 01:51\"\n        },\n        {\n            \"uuid\": \"198873c3-b9d0-494b-ac0f-7af8348e0489\",\n            \"nome\": \"Glover and Sons\",\n            \"descricao\": \"Dolor autem voluptatem omnis sapiente esse nostrum incidunt.\",\n            \"preco\": 623.77,\n            \"categoria\": {\n                \"nome\": \"Douglas - Robel\",\n                \"descricao\": \"Rerum velit officia iure.\",\n                \"status\": 0\n            },\n            \"dt_criacao\": \"17/04/2026 01:51\",\n            \"dt_atualizacao\": \"17/04/2026 01:51\"\n        },\n        {\n            \"uuid\": \"cfd2e5c8-7d01-4033-af3c-48d5ecb143f7\",\n            \"nome\": \"Jerde - Harvey\",\n            \"descricao\": \"Facere tenetur aut qui aut aperiam dicta corrupti quos.\",\n            \"preco\": 732.34,\n            \"categoria\": {\n                \"nome\": \"Douglas - Robel\",\n                \"descricao\": \"Rerum velit officia iure.\",\n                \"status\": 0\n            },\n            \"dt_criacao\": \"17/04/2026 01:52\",\n            \"dt_atualizacao\": \"17/04/2026 01:52\"\n        },\n        {\n            \"uuid\": \"b625c63c-66bc-402e-97a4-334ec16e6d71\",\n            \"nome\": \"Zemlak Inc\",\n            \"descricao\": \"Est eaque placeat.\",\n            \"preco\": 177.28,\n            \"categoria\": {\n                \"nome\": \"Douglas - Robel\",\n                \"descricao\": \"Rerum velit officia iure.\",\n                \"status\": 0\n            },\n            \"dt_criacao\": \"17/04/2026 01:52\",\n            \"dt_atualizacao\": \"17/04/2026 01:52\"\n        },\n        {\n            \"uuid\": \"2c3ee347-14c2-4748-9da2-78708b0970f3\",\n            \"nome\": \"McGlynn - Marvin\",\n            \"descricao\": \"Ad nisi perspiciatis nostrum alias non sed modi.\",\n            \"preco\": 904.36,\n            \"categoria\": {\n                \"nome\": \"Douglas - Robel\",\n                \"descricao\": \"Rerum velit officia iure.\",\n                \"status\": 0\n            },\n            \"dt_criacao\": \"17/04/2026 01:52\",\n            \"dt_atualizacao\": \"17/04/2026 01:52\"\n        },\n        {\n            \"uuid\": \"90ae6f3b-dc10-4aef-bda9-00b26f73bd38\",\n            \"nome\": \"Mayer - Rosenbaum\",\n            \"descricao\": \"Optio architecto in maiores.\",\n            \"preco\": 559.92,\n            \"categoria\": {\n                \"nome\": \"Douglas - Robel\",\n                \"descricao\": \"Rerum velit officia iure.\",\n                \"status\": 0\n            },\n            \"dt_criacao\": \"17/04/2026 01:52\",\n            \"dt_atualizacao\": \"17/04/2026 01:52\"\n        },\n        {\n            \"uuid\": \"de6b3b09-bd77-4b33-9a3f-9a98bf791f9f\",\n            \"nome\": \"Cruickshank - Berge\",\n            \"descricao\": \"Dolor sed eum.\",\n            \"preco\": 921.08,\n            \"categoria\": {\n                \"nome\": \"Douglas - Robel\",\n                \"descricao\": \"Rerum velit officia iure.\",\n                \"status\": 0\n            },\n            \"dt_criacao\": \"17/04/2026 01:52\",\n            \"dt_atualizacao\": \"17/04/2026 01:52\"\n        },\n        {\n            \"uuid\": \"ba8dc6d6-bfc4-4695-a2fa-6c95a986e21c\",\n            \"nome\": \"Brown, Considine and Prosacco\",\n            \"descricao\": \"Facere dolores ut perferendis.\",\n            \"preco\": 438.54,\n            \"categoria\": {\n                \"nome\": \"Douglas - Robel\",\n                \"descricao\": \"Rerum velit officia iure.\",\n                \"status\": 0\n            },\n            \"dt_criacao\": \"17/04/2026 01:53\",\n            \"dt_atualizacao\": \"17/04/2026 01:53\"\n        },\n        {\n            \"uuid\": \"63e92220-e87e-4e57-bb40-b0d5ad9fb6ff\",\n            \"nome\": \"Lockman, Kuvalis and Steuber\",\n            \"descricao\": \"Omnis consequuntur illum doloribus autem quidem.\",\n            \"preco\": 325.25,\n            \"categoria\": {\n                \"nome\": \"Douglas - Robel\",\n                \"descricao\": \"Rerum velit officia iure.\",\n                \"status\": 0\n            },\n            \"dt_criacao\": \"17/04/2026 01:53\",\n            \"dt_atualizacao\": \"17/04/2026 01:53\"\n        },\n        {\n            \"uuid\": \"083fc1c7-390a-4715-bbfd-4574c16e40f1\",\n            \"nome\": \"Okuneva, Reinger and Hartmann\",\n            \"descricao\": \"Ipsa aut neque sit.\",\n            \"preco\": 640.14,\n            \"categoria\": {\n                \"nome\": \"Douglas - Robel\",\n                \"descricao\": \"Rerum velit officia iure.\",\n                \"status\": 0\n            },\n            \"dt_criacao\": \"17/04/2026 01:53\",\n            \"dt_atualizacao\": \"17/04/2026 01:53\"\n        },\n        {\n            \"uuid\": \"1570468c-2e0f-4be0-8b35-3495a47047b3\",\n            \"nome\": \"Zboncak - Beatty\",\n            \"descricao\": \"Dolor amet dicta in vitae.\",\n            \"preco\": 326.47,\n            \"categoria\": {\n                \"nome\": \"Douglas - Robel\",\n                \"descricao\": \"Rerum velit officia iure.\",\n                \"status\": 0\n            },\n            \"dt_criacao\": \"17/04/2026 01:53\",\n            \"dt_atualizacao\": \"17/04/2026 01:53\"\n        },\n        {\n            \"uuid\": \"9bac375d-6cad-427a-9441-efbb533be6fd\",\n            \"nome\": \"Schumm Inc\",\n            \"descricao\": \"Et veritatis deserunt nisi adipisci veniam sed officia ullam aut.\",\n            \"preco\": 610.84,\n            \"categoria\": {\n                \"nome\": \"Douglas - Robel\",\n                \"descricao\": \"Rerum velit officia iure.\",\n                \"status\": 0\n            },\n            \"dt_criacao\": \"17/04/2026 01:54\",\n            \"dt_atualizacao\": \"17/04/2026 01:54\"\n        },\n        {\n            \"uuid\": \"9996feb5-44aa-4edf-9977-fbd50a7c4133\",\n            \"nome\": \"Orn Inc\",\n            \"descricao\": \"Sit consequatur autem accusantium ex.\",\n            \"preco\": 417.03,\n            \"categoria\": {\n                \"nome\": \"Douglas - Robel\",\n                \"descricao\": \"Rerum velit officia iure.\",\n                \"status\": 0\n            },\n            \"dt_criacao\": \"17/04/2026 01:55\",\n            \"dt_atualizacao\": \"17/04/2026 01:55\"\n        },\n        {\n            \"uuid\": \"077f17c1-70d8-404a-af68-05c1c00e152f\",\n            \"nome\": \"Bruen - Denesik\",\n            \"descricao\": \"Voluptatem esse atque voluptas.\",\n            \"preco\": 266.15,\n            \"categoria\": {\n                \"nome\": \"Douglas - Robel\",\n                \"descricao\": \"Rerum velit officia iure.\",\n                \"status\": 0\n            },\n            \"dt_criacao\": \"17/04/2026 01:56\",\n            \"dt_atualizacao\": \"17/04/2026 01:56\"\n        },\n        {\n            \"uuid\": \"d96109cb-dd85-4992-86cd-c83913caf093\",\n            \"nome\": \"Parisian - Mosciski\",\n            \"descricao\": \"Deserunt assumenda debitis consequatur mollitia laborum eos assumenda mollitia minus.\",\n            \"preco\": 393.65,\n            \"categoria\": {\n                \"nome\": \"Douglas - Robel\",\n                \"descricao\": \"Rerum velit officia iure.\",\n                \"status\": 0\n            },\n            \"dt_criacao\": \"17/04/2026 01:56\",\n            \"dt_atualizacao\": \"17/04/2026 01:56\"\n        },\n        {\n            \"uuid\": \"5a04eaa9-26c0-41f1-a768-092753f79684\",\n            \"nome\": \"Konopelski, Kertzmann and Mante\",\n            \"descricao\": \"Sint ut non.\",\n            \"preco\": 162.18,\n            \"categoria\": {\n                \"nome\": \"Douglas - Robel\",\n                \"descricao\": \"Rerum velit officia iure.\",\n                \"status\": 0\n            },\n            \"dt_criacao\": \"17/04/2026 01:56\",\n            \"dt_atualizacao\": \"17/04/2026 01:56\"\n        },\n        {\n            \"uuid\": \"3c834eb7-b880-4f23-bb56-ba6c4bf49b57\",\n            \"nome\": \"O'Connell, Goyette and McKenzie\",\n            \"descricao\": \"Quos non qui autem animi aut optio non doloribus quo.\",\n            \"preco\": 464.66,\n            \"categoria\": {\n                \"nome\": \"Douglas - Robel\",\n                \"descricao\": \"Rerum velit officia iure.\",\n                \"status\": 0\n            },\n            \"dt_criacao\": \"17/04/2026 01:56\",\n            \"dt_atualizacao\": \"17/04/2026 01:56\"\n        },\n        {\n            \"uuid\": \"56ed5a89-0b0f-49eb-9d1c-9e6b38fa8b9e\",\n            \"nome\": \"Tromp - Farrell\",\n            \"descricao\": \"Vero blanditiis et et aut.\",\n            \"preco\": 214.67,\n            \"categoria\": {\n                \"nome\": \"Douglas - Robel\",\n                \"descricao\": \"Rerum velit officia iure.\",\n                \"status\": 0\n            },\n            \"dt_criacao\": \"17/04/2026 01:56\",\n            \"dt_atualizacao\": \"17/04/2026 01:56\"\n        },\n        {\n            \"uuid\": \"8981c8a3-2da8-4bc8-a290-f194aaf73256\",\n            \"nome\": \"Ernser Inc\",\n            \"descricao\": \"Neque recusandae a et.\",\n            \"preco\": 9.97,\n            \"categoria\": {\n                \"nome\": \"Douglas - Robel\",\n                \"descricao\": \"Rerum velit officia iure.\",\n                \"status\": 0\n            },\n            \"dt_criacao\": \"17/04/2026 01:57\",\n            \"dt_atualizacao\": \"17/04/2026 01:57\"\n        },\n        {\n            \"uuid\": \"81547be7-3cc7-4317-be94-da8606f84879\",\n            \"nome\": \"Steuber and Sons\",\n            \"descricao\": \"Ut ut sequi possimus natus minima.\",\n            \"preco\": 891.2,\n            \"categoria\": {\n                \"nome\": \"Douglas - Robel\",\n                \"descricao\": \"Rerum velit officia iure.\",\n                \"status\": 0\n            },\n            \"dt_criacao\": \"17/04/2026 01:57\",\n            \"dt_atualizacao\": \"17/04/2026 01:57\"\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "read one",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{api}}/produtos?uuid=a2100dba-664e-4c83-92ba-da7a78e81328",
+              "host": [
+                "{{api}}"
+              ],
+              "path": [
+                "produtos"
+              ],
+              "query": [
+                {
+                  "key": "uuid",
+                  "value": "a2100dba-664e-4c83-92ba-da7a78e81328"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{api}}/produtos?uuid=a2100dba-664e-4c83-92ba-da7a78e81328",
+                  "host": [
+                    "{{api}}"
+                  ],
+                  "path": [
+                    "produtos"
+                  ],
+                  "query": [
+                    {
+                      "key": "uuid",
+                      "value": "a2100dba-664e-4c83-92ba-da7a78e81328"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "",
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx/1.29.8"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.4.20"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 17 Apr 2026 02:08:06 GMT"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"err\": false,\n    \"msg\": \"Produtos listados com sucesso.\",\n    \"data\": [\n        {\n            \"uuid\": \"a2100dba-664e-4c83-92ba-da7a78e81328\",\n            \"nome\": \"Beahan - Wiza\",\n            \"descricao\": \"Est id atque iure totam non est magnam repudiandae fugiat.\",\n            \"preco\": 407.43,\n            \"categoria\": {\n                \"nome\": \"Douglas - Robel\",\n                \"descricao\": \"Rerum velit officia iure.\",\n                \"status\": 0\n            },\n            \"dt_criacao\": \"17/04/2026 01:49\",\n            \"dt_atualizacao\": \"17/04/2026 01:49\"\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{api}}/produtos/a2100dba-664e-4c83-92ba-da7a78e81328",
+              "host": [
+                "{{api}}"
+              ],
+              "path": [
+                "produtos",
+                "a2100dba-664e-4c83-92ba-da7a78e81328"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "204 (sucess)",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{api}}/produtos/a2100dba-664e-4c83-92ba-da7a78e81328",
+                  "host": [
+                    "{{api}}"
+                  ],
+                  "path": [
+                    "produtos",
+                    "a2100dba-664e-4c83-92ba-da7a78e81328"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "",
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx/1.29.8"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.4.20"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 17 Apr 2026 02:12:38 GMT"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": ""
+            }
+          ]
+        },
+        {
+          "name": "update",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nome\": \"{{$randomCompanyName}}\",\r\n    \"descricao\": \"{{$randomLoremSentence}}\",\r\n    \"preco\": {{$randomPrice}},\r\n    \"categoria\": \"86e47f32-4035-44eb-add5-ce72cf413749\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{api}}/produtos/c421f2b5-2ef1-433a-b3e5-35c7f9de84d1",
+              "host": [
+                "{{api}}"
+              ],
+              "path": [
+                "produtos",
+                "c421f2b5-2ef1-433a-b3e5-35c7f9de84d1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"nome\": \"{{$randomCompanyName}}\",\r\n    \"descricao\": \"{{$randomLoremSentence}}\",\r\n    \"preco\": {{$randomPrice}},\r\n    \"categoria\": \"86e47f32-4035-44eb-add5-ce72cf413749\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{api}}/produtos/c421f2b5-2ef1-433a-b3e5-35c7f9de84d1",
+                  "host": [
+                    "{{api}}"
+                  ],
+                  "path": [
+                    "produtos",
+                    "c421f2b5-2ef1-433a-b3e5-35c7f9de84d1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "",
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx/1.29.8"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.4.20"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 17 Apr 2026 02:27:58 GMT"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"err\": false,\n    \"msg\": \"Dados do produto atualizados com sucesso.\",\n    \"data\": {\n        \"uuid\": \"c421f2b5-2ef1-433a-b3e5-35c7f9de84d1\",\n        \"nome\": \"Ondricka, Blick and Ebert\",\n        \"descricao\": \"Est eos ut veritatis quidem est rem.\",\n        \"preco\": 288.68,\n        \"categoria_id\": 2,\n        \"categoria\": {\n            \"nome\": \"Boyer and Sons\",\n            \"descricao\": \"Neque officia est esse illum autem.\",\n            \"status\": 1\n        },\n        \"dt_criacao\": \"17/04/2026 01:50\",\n        \"dt_atualizacao\": \"17/04/2026 02:27\"\n    }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ping",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Response should have a status code of 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "})\r",
+              "\r",
+              "pm.test(\"Response should have a json body\", function () {\r",
+              "    pm.response.to.have.jsonBody;\r",
+              "})\r",
+              "\r",
+              "pm.test(\"Response should have a body with err set to false\", function () {\r",
+              "    pm.expect(pm.response.json().err).to.be.false;\r",
+              "})\r",
+              "\r",
+              "pm.test(\"Response should have a body with msg set to 'pong'\", function () {\r",
+              "    pm.expect(pm.response.json().msg).to.eql(\"pong\");\r",
+              "})"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{api}}/ping",
+          "host": [
+            "{{api}}"
+          ],
+          "path": [
+            "ping"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "200",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{api}}/ping",
+              "host": [
+                "{{api}}"
+              ],
+              "path": [
+                "ping"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "nginx/1.29.8"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "PHP/8.4.20"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, private"
+            },
+            {
+              "key": "Date",
+              "value": "Thu, 16 Apr 2026 22:13:28 GMT"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"err\": false,\n    \"msg\": \"pong\"\n}"
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "api",
+      "value": "http://localhost:8000/api"
+    }
+  ]
+}

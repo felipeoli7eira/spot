@@ -85,6 +85,9 @@ Na raiz desse repositório você consegue encontrar a collection postman para te
 
 ![docker-ps.png](./docs/postman-ping.png)
 
+A variável de URL `{{api}}` está definida à nível de collection. Clique no nome da collection e em seguinte procute "`Variables`":
+![alt text](./docs/postman-variables.png)
+
 Deixei alguns testes post-response como demonstração de que podemos usar o postman para aplicar alguns testes na API.
 
 ![docker-ps.png](./docs/postman-tests.png)
