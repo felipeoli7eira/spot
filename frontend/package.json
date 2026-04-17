@@ -1,22 +1,39 @@
 {
-  "name": "spot",
-  "private": true,
+  "name": "auth-panel",
   "version": "0.0.0",
+  "private": true,
   "type": "module",
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "build": "run-p type-check \"build-only {@}\" --",
+    "preview": "vite preview",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build"
   },
   "dependencies": {
-    "vue": "^3.5.32"
+    "@tailwindcss/vite": "^4.1.18",
+    "@types/axios": "^0.9.36",
+    "axios": "^1.15.0",
+    "lucide-vue-next": "^0.562.0",
+    "vue": "^3.5.26",
+    "vue-router": "^4.6.4"
   },
   "devDependencies": {
-    "@types/node": "^24.12.2",
-    "@vitejs/plugin-vue": "^6.0.5",
-    "@vue/tsconfig": "^0.9.1",
-    "typescript": "~6.0.2",
-    "vite": "^8.0.4",
-    "vue-tsc": "^3.2.6"
+    "@tsconfig/node24": "^24.0.3",
+    "@types/node": "^24.10.4",
+    "@vitejs/plugin-vue": "^6.0.3",
+    "@vue/tsconfig": "^0.8.1",
+    "autoprefixer": "^10.4.23",
+    "daisyui": "^5.5.14",
+    "npm-run-all2": "^8.0.4",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.18",
+    "typescript": "~5.9.3",
+    "vite": "^7.3.0",
+    "vite-plugin-vue-devtools": "^8.0.5",
+    "vue-tsc": "^3.2.2"
   }
 }
