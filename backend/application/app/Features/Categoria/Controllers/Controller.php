@@ -43,7 +43,7 @@ final class Controller extends BaseController
             );
         }
 
-        return Response::json($this->err(
+        return Response::json($this->sucesso(
             $categoria,
             "Categoria criada com sucesso.",
         ), HttpFoundationResponse::HTTP_CREATED);
