@@ -12,4 +12,5 @@ Route::get('ping', fn() => response()->json([
 
 Route::prefix('/categorias')->group(function () {
     Route::post('/', [Controller::class, 'criar']);
+    Route::get('/', [Controller::class, 'read']);
 });

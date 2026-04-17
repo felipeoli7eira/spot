@@ -20,4 +20,11 @@ final class LaravelEloquenteModelMySQL
 
         return $criado->toArray();
     }
+
+    public function read(): array
+    {
+        $categorias = $this->model->all();
+
+        return $categorias->toArray();
+    }
 }

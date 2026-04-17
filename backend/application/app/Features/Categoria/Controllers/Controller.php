@@ -43,4 +43,27 @@ final class Controller extends BaseController
             "Categoria criada com sucesso.",
         ), HttpFoundationResponse::HTTP_CREATED);
     }
+
+    public function read()
+    {
+        try {
+            $categorias = $this->service->read();
+        } catch (Throwable $err) {
+            return Response::json(
+                $this->err(
+                    [
+                        "getFile" => $err->getFile(),
+                        "getLine" => $err->getLine(),
+                    ],
+                    $err->getMessage(),
+                ),
+                HttpFoundationResponse::HTTP_INTERNAL_SERVER_ERROR,
+            );
+        }
+
+        return Response::json($this->sucesso(
+            $categorias,
+            "Categoria listadas com sucesso.",
+        ), HttpFoundationResponse::HTTP_OK);
+    }
 }

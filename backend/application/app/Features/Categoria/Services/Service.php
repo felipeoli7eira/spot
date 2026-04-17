@@ -28,4 +28,19 @@ final class Service
 
         return $categoria;
     }
+
+    public function read(): array
+    {
+        $categorias = $this->repositorio->read();
+
+        return collect($categorias)->map(function ($categoria) {
+            $categoria['dt_criacao'] = now()->createFromDate($categoria['created_at'])->format('d/m/Y H:i');
+            $categoria['dt_atualizacao'] = now()->createFromDate($categoria['updated_at'])->format('d/m/Y H:i');
+
+            unset($categoria['created_at']);
+            unset($categoria['updated_at']);
+
+            return $categoria;
+        })->toArray();;
+    }
 }
